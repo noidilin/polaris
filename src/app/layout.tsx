@@ -1,7 +1,17 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from '@clerk/nextjs'
+import { dark } from '@clerk/themes'
 import { TailwindIndicator } from '@/components/base/tailwind-indicator'
 import { ThemeProvider } from '@/components/base/theme-provider'
+import { ThemeToggle } from '@/components/base/theme-toggle'
 // import { Toaster } from '@/components/ui/sonner'
 import { fraunces, merriweatherSans, mono } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
@@ -17,28 +27,49 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          merriweatherSans.variable,
-          fraunces.variable,
-          mono.variable,
-          'bg-background font-mono text-foreground antialiased',
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <ClerkProvider appearance={{ theme: dark }}>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={cn(
+            merriweatherSans.variable,
+            fraunces.variable,
+            mono.variable,
+            'bg-background font-mono text-foreground antialiased',
+          )}
         >
-          <main className="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8">
-            {children}
-            <TailwindIndicator />
-          </main>
-          {/* <Toaster closeButton /> */}
-        </ThemeProvider>
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <main className="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8">
+              <nav className="flex h-16 items-center justify-end gap-4 p-4">
+                {/* Show the sign-in and sign-up buttons when the user is signed out */}
+                <SignedOut>
+                  <SignInButton />
+                  <SignUpButton>
+                    <button
+                      type="button"
+                      className="h-10 cursor-pointer rounded-full bg-background px-4 font-medium text-foreground text-sm sm:h-12 sm:px-5 sm:text-base"
+                    >
+                      Sign Up
+                    </button>
+                  </SignUpButton>
+                </SignedOut>
+                {/* Show the user button when the user is signed in */}
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+                <ThemeToggle />
+              </nav>
+              {children}
+              <TailwindIndicator />
+            </main>
+            {/* <Toaster closeButton /> */}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
