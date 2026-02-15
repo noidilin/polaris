@@ -8,7 +8,10 @@ export default {
   providers: [
     {
       domain: process.env.CLERK_JWT_ISSUER_DOMAIN,
-      applicationID: 'convex', // NOTE: needs to be the same as the JWT template in clerk
+      // WARN: applicationID needs to be the same as the JWT template in clerk
+      applicationID: 'convex',
     },
   ],
-} satisfies AuthConfig // TODO: what does this typescript syntax `satisfies` do?
+} satisfies AuthConfig
+// NOTE: validates our config conforms to AuthConfig,
+// but still infer the final type from our config
