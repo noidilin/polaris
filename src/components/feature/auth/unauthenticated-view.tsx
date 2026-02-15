@@ -1,0 +1,42 @@
+// import { ShieldAlertIcon } from "lucide-react";
+
+import { SignInButton } from '@clerk/nextjs'
+import { Shield01Icon } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
+import { Button } from '@/components/ui/button'
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from '@/components/ui/item'
+
+export function UnauthenticatedView() {
+  return (
+    <div className="flex h-screen items-center justify-center bg-background">
+      <div className="w-full max-w-lg bg-muted">
+        <Item variant="outline">
+          <ItemMedia variant="icon">
+            <HugeiconsIcon icon={Shield01Icon} />
+            {/* <ShieldAlertIcon /> */}
+          </ItemMedia>
+          <ItemContent>
+            <ItemTitle>Unauthorized Access</ItemTitle>
+            <ItemDescription>
+              You are not authorized to access this resource.
+            </ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <SignInButton>
+              <Button variant="outline" size="sm">
+                Sign in
+              </Button>
+            </SignInButton>
+          </ItemActions>
+        </Item>
+      </div>
+    </div>
+  )
+}
