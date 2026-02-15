@@ -8,7 +8,7 @@ import { v } from 'convex/values'
 // - provides better typescript tooling
 // - it helps define indexes/search/vector consistently with tables
 
-// PERF: align with zod valdator at client-side
+// PERF: align with zod validator at client-side
 // centralize shared constraits in constants to reduce copy-paste drift
 // for example:
 // `export const IMPORT_STATUSES = ["importing", "completed", "failed"] as const`

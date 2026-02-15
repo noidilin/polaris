@@ -1,5 +1,8 @@
+# Polaris
 
-## Auth Integration Checklist (Provider-Agnostic)
+## Notes
+
+### Auth Integration Checklist (Provider-Agnostic)
 
 1. Define trust boundaries  
     - List runtimes: Browser, App Server, BaaS Backend, CLI/CI.  
@@ -35,7 +38,7 @@
     - Rotate secrets, avoid committing `.env*`, use least-privilege keys.  
     - Document each env var: who reads it, why it exists, what breaks if wrong.
 
-### Current stack (Clerk + Convex + Next.js)
+#### Current stack (Clerk + Convex + Next.js)
 
 - Browser uses Clerk public key + Convex public URL.
 - Convex backend trusts Clerk tokens via issuer/application config.
