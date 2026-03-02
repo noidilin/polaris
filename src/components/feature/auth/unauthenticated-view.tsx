@@ -1,5 +1,3 @@
-// import { ShieldAlertIcon } from "lucide-react";
-
 import { SignInButton } from '@clerk/nextjs'
 import { Shield01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
@@ -20,7 +18,6 @@ export function UnauthenticatedView() {
         <Item variant="outline">
           <ItemMedia variant="icon">
             <HugeiconsIcon icon={Shield01Icon} />
-            {/* <ShieldAlertIcon /> */}
           </ItemMedia>
           <ItemContent>
             <ItemTitle>Unauthorized Access</ItemTitle>
