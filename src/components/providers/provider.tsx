@@ -1,7 +1,5 @@
 'use client'
 
-// TODO: why use client here?
-
 import { ClerkProvider, UserButton } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
 import { Authenticated, AuthLoading, Unauthenticated } from 'convex/react'
